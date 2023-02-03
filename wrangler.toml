@@ -1,6 +1,6 @@
 account_id = "e187dafb9c5a119daf5c9e5496b8aff2"
 
-name = "square-cell-10b1"
+name = "quickname"
 main = "index.js"
 compatibility_date = "2023-02-03"
 
@@ -10,3 +10,7 @@ route = { pattern = "quickna.me", custom_domain = true }
 kv_namespaces = [
   { binding = "KV_STORE", id = "e31284fa2fd64cf18808e1b3180d0e86" }
 ]
+
+minify = true
+
+send_metrics = false
