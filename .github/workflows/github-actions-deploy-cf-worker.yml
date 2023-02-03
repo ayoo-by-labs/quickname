@@ -13,16 +13,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Minify (Stage 1)
-        uses: nizarmah/auto-minify@v2.1
-        with:
-          maxdepth: 1
-
-      - name: Minify (Stage 2)
-        run: |
-          # Replace the original file with the minified file.
-          mv "index.min.js" "index.js"
-
       - name: Publish
         uses: cloudflare/wrangler-action@2.0.0
         with:
