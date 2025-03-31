@@ -6,6 +6,10 @@ compatibility_date = "2023-02-03"
 
 workers_dev = false
 route = { pattern = "quickna.me", custom_domain = true }
+routes = [
+  { pattern = "quickna.me", custom_domain = true },
+  { pattern = "www.quickna.me", custom_domain = true }
+]
 
 kv_namespaces = [
   { binding = "KV_STORE", id = "e31284fa2fd64cf18808e1b3180d0e86" }
