@@ -5,7 +5,6 @@ main = "index.js"
 compatibility_date = "2023-02-03"
 
 workers_dev = false
-route = { pattern = "quickna.me", custom_domain = true }
 routes = [
   { pattern = "quickna.me", custom_domain = true },
   { pattern = "www.quickna.me", custom_domain = true }
