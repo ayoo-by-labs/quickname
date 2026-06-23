@@ -479,12 +479,10 @@ async function handleRequest(request, randValues, time) {
 		}
 		.field::placeholder { color: var(--ink-faint); }
 		.field:focus, .field:focus-visible { outline: none; border-color: var(--border-glass); }
-		.qn-form .btn { position: relative; isolation: isolate; align-self: center; margin-top: 0.4rem; color: #fff; background: var(--sage-600); box-shadow: 0 12px 26px -14px rgba(81,97,63,0.9), inset 0 1px 1px rgba(255,255,255,0.85), inset 0 -5px 9px -7px rgba(90,110,70,0.12); }
-		/* Layered like the hero theme-switch labs-pill: ::before is the is-active frosted-glass fill, ::after the glossy top reflection. Both sit below the label (z-index) so "Shorten" stays crisp. */
-		.qn-form .btn::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: -1; background: rgba(255,255,255,0.24); }
+		.qn-form .btn { position: relative; isolation: isolate; align-self: center; margin-top: 0.4rem; color: #fff; background: var(--sage-600); box-shadow: 0 12px 26px -14px rgba(81,97,63,0.9); }
+		/* Glossy top reflection — matches the hero theme-switch / Ayooby labs-pill. z-index keeps the label crisp above the sheen. */
 		.qn-form .btn::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: -1; background: linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.08) 34%, transparent 60%); }
-		[data-theme="dark"] .qn-form .btn { background: var(--sage-500); color: #10161f; box-shadow: 0 12px 26px -14px rgba(81,97,63,0.9), inset 0 1px 1px rgba(255,255,255,0.22), inset 0 -5px 9px -7px rgba(0,0,0,0.18); }
-		[data-theme="dark"] .qn-form .btn::before { background: rgba(16,22,31,0.18); }
+		[data-theme="dark"] .qn-form .btn { background: var(--sage-500); color: #10161f; }
 		[data-theme="dark"] .qn-form .btn::after { background: linear-gradient(180deg, rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.05) 36%, transparent 62%); }
 		.status { display: block; min-height: 1.4em; margin-top: 1rem; color: var(--ink-soft); font-size: 0.95rem; }
 		.status a { color: var(--sage-700); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--sage-300); font-weight: 500; }
@@ -970,12 +968,10 @@ async function handleRequest(request, randValues, time) {
 		}
 		.field::placeholder { color: var(--ink-faint); }
 		.field:focus, .field:focus-visible { outline: none; border-color: var(--border-glass); }
-		.qn-form .btn { position: relative; isolation: isolate; align-self: center; margin-top: 0.4rem; color: #fff; background: var(--sage-600); box-shadow: 0 12px 26px -14px rgba(81,97,63,0.9), inset 0 1px 1px rgba(255,255,255,0.85), inset 0 -5px 9px -7px rgba(90,110,70,0.12); }
-		/* Layered like the hero theme-switch labs-pill: ::before is the is-active frosted-glass fill, ::after the glossy top reflection. Both sit below the label (z-index) so "Shorten" stays crisp. */
-		.qn-form .btn::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: -1; background: rgba(255,255,255,0.24); }
+		.qn-form .btn { position: relative; isolation: isolate; align-self: center; margin-top: 0.4rem; color: #fff; background: var(--sage-600); box-shadow: 0 12px 26px -14px rgba(81,97,63,0.9); }
+		/* Glossy top reflection — matches the hero theme-switch / Ayooby labs-pill. z-index keeps the label crisp above the sheen. */
 		.qn-form .btn::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: -1; background: linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.08) 34%, transparent 60%); }
-		[data-theme="dark"] .qn-form .btn { background: var(--sage-500); color: #10161f; box-shadow: 0 12px 26px -14px rgba(81,97,63,0.9), inset 0 1px 1px rgba(255,255,255,0.22), inset 0 -5px 9px -7px rgba(0,0,0,0.18); }
-		[data-theme="dark"] .qn-form .btn::before { background: rgba(16,22,31,0.18); }
+		[data-theme="dark"] .qn-form .btn { background: var(--sage-500); color: #10161f; }
 		[data-theme="dark"] .qn-form .btn::after { background: linear-gradient(180deg, rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.05) 36%, transparent 62%); }
 		.status { display: block; min-height: 1.4em; margin-top: 1rem; color: var(--ink-soft); font-size: 0.95rem; }
 		.status a { color: var(--sage-700); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--sage-300); font-weight: 500; }
