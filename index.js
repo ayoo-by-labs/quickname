@@ -109,7 +109,7 @@ async function handleRequest(request, randValues, time) {
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 	<script nonce="${scriptNonce}">
-	(function(){try{var u=new URLSearchParams(location.search).get("theme");var p=u||localStorage.getItem("theme")||"auto";var m=p==="auto"?(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"):p;var d=document.documentElement;d.dataset.theme=m;d.dataset.themePref=p;var mc=document.querySelector('meta[name=theme-color]');if(mc)mc.content=m==="dark"?"#0f1622":"#f3f0e7";}catch(e){}})();
+	(function(){try{var u=new URLSearchParams(location.search).get("theme");var p=u||localStorage.getItem("theme")||"auto";var m=p==="auto"?(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"):p;var d=document.documentElement;d.dataset.theme=m;d.dataset.themePref=p;var mc=document.querySelector("meta[name=theme-color]");if(mc)mc.content=m==="dark"?"#0f1622":"#f3f0e7";}catch(e){}})();
 	</script>
 
 	<style nonce="${styleNonce}">
@@ -595,7 +595,7 @@ async function handleRequest(request, randValues, time) {
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 	<script nonce="${scriptNonce}">
-	(function(){try{var u=new URLSearchParams(location.search).get("theme");var p=u||localStorage.getItem("theme")||"auto";var m=p==="auto"?(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"):p;var d=document.documentElement;d.dataset.theme=m;d.dataset.themePref=p;var mc=document.querySelector('meta[name=theme-color]');if(mc)mc.content=m==="dark"?"#0f1622":"#f3f0e7";}catch(e){}})();
+	(function(){try{var u=new URLSearchParams(location.search).get("theme");var p=u||localStorage.getItem("theme")||"auto";var m=p==="auto"?(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"):p;var d=document.documentElement;d.dataset.theme=m;d.dataset.themePref=p;var mc=document.querySelector("meta[name=theme-color]");if(mc)mc.content=m==="dark"?"#0f1622":"#f3f0e7";}catch(e){}})();
 	</script>
 
 	<style nonce="${styleNonce}">
@@ -1363,9 +1363,12 @@ self.addEventListener('fetch', function (event) {
 
 	if (request.method === "POST") {
 		const jsonData = JSON.parse(JSON.stringify(await request.json()));
-		let aliasPath = jsonData.alias;
-		let clientTotp = jsonData.totp;
-		let originUrl = jsonData.origin;
+		// Coerce the attacker-controlled body to strings up front: a missing or non-string
+		// field would otherwise crash the string methods below (.replace/.toLowerCase) into
+		// a 500 that leaks a stack trace.
+		let aliasPath = String(jsonData.alias ?? "");
+		let clientTotp = String(jsonData.totp ?? "");
+		let originUrl = String(jsonData.origin ?? "");
 
 		let doesAliasExist = function (existingValue) {
 			if (existingValue === null) {
@@ -1419,7 +1422,7 @@ self.addEventListener('fetch', function (event) {
 		// the URL: startsWith() let "https://quickna.me.example.com" pass and false-flagged
 		// unrelated hosts (CodeQL js/incomplete-url-substring-sanitization).
 		let originHost = "";
-		try { originHost = new URL(originUrl).hostname.toLowerCase(); } catch (e) { originHost = ""; }
+		try { originHost = new URL(originUrl).hostname.toLowerCase().replace(/\.$/, ""); } catch (e) { originHost = ""; }
 		if ((originHost === "quickna.me") || (originHost === "www.quickna.me")) {
 			return new Response("Nice try, but that won't work.");
 		}
