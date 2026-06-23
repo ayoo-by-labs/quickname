@@ -9,7 +9,7 @@
 		"email": "lazerl0rd@thezest.dev",
 		"url": "https://www.thezest.dev"
 	},
-	"bugs": "https://github.com/ZestProjects/quickname/issues",
+	"bugs": "https://github.com/ayoo-by-labs/quickname/issues",
 	"homepage": "https://quickna.me",
 	"license": "CC BY-NC-SA 4.0",
 	"keywords": [
@@ -22,6 +22,6 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/ZestProjects/quickname.git"
+		"url": "https://github.com/ayoo-by-labs/quickname.git"
 	}
 }
