@@ -478,7 +478,7 @@ async function handleRequest(request, randValues, time) {
 			transition: border-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
 		}
 		.field::placeholder { color: var(--ink-faint); }
-		.field:focus-visible { border-color: var(--sage-500); outline: 2px solid var(--sage-500); outline-offset: 3px; }
+		.field:focus, .field:focus-visible { outline: none; border-color: var(--border-glass); }
 		.qn-form .btn { align-self: center; margin-top: 0.4rem; color: #fff; background: var(--sage-600); box-shadow: 0 12px 26px -14px rgba(81,97,63,0.9); }
 		[data-theme="dark"] .qn-form .btn { background: var(--sage-500); color: #10161f; }
 		.status { display: block; min-height: 1.4em; margin-top: 1rem; color: var(--ink-soft); font-size: 0.95rem; }
@@ -964,7 +964,7 @@ async function handleRequest(request, randValues, time) {
 			transition: border-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
 		}
 		.field::placeholder { color: var(--ink-faint); }
-		.field:focus-visible { border-color: var(--sage-500); outline: 2px solid var(--sage-500); outline-offset: 3px; }
+		.field:focus, .field:focus-visible { outline: none; border-color: var(--border-glass); }
 		.qn-form .btn { align-self: center; margin-top: 0.4rem; color: #fff; background: var(--sage-600); box-shadow: 0 12px 26px -14px rgba(81,97,63,0.9); }
 		[data-theme="dark"] .qn-form .btn { background: var(--sage-500); color: #10161f; }
 		.status { display: block; min-height: 1.4em; margin-top: 1rem; color: var(--ink-soft); font-size: 0.95rem; }
@@ -1007,8 +1007,8 @@ async function handleRequest(request, randValues, time) {
 					<p class="tagline enter"><s>Not</s> your average link shortener.</p>
 					<div class="qn-form enter">
 						<input class="field" type="text" id="url" placeholder="URL" required>
-						<input class="field" type="text" id="alias" placeholder="Alias (optional)">
-						<input class="field" type="text" id="totp" placeholder="TOTP (optional)">
+						<input class="field" type="text" id="alias" placeholder="Alias (Optional)">
+						<input class="field" type="text" id="totp" placeholder="TOTP (Optional)">
 						<!--sse-->
 						<button id="submit" class="btn" type="button">Shorten</button>
 						<script nonce="${scriptNonce}">
@@ -1366,7 +1366,6 @@ self.addEventListener('fetch', function (event) {
 		let aliasPath = jsonData.alias;
 		let clientTotp = jsonData.totp;
 		let originUrl = jsonData.origin;
-		let serverTotp = await getOtp(totpSecret, time);
 
 		let doesAliasExist = function (existingValue) {
 			if (existingValue === null) {
@@ -1379,8 +1378,11 @@ self.addEventListener('fetch', function (event) {
 		// Remove spaces from the OTP as some authenticator apps add them in.
 		clientTotp = clientTotp.replace(/\s+/g, "");
 
-		// Handle the OTP verification first as it is time constrainted
-		if (clientTotp !== "") {
+		// Handle the OTP verification first as it is time constrainted. Only compute the
+		// server OTP when a secret is configured and the client supplied one — getOtp()
+		// throws on an empty secret (hexToArray() on an empty string returns null).
+		if ((clientTotp !== "") && (totpSecret !== "")) {
+			let serverTotp = await getOtp(totpSecret, time);
 			if (Number(clientTotp) !== Number(serverTotp)) {
 				return new Response(`The OTP you have entered was incorrect.`);
 			}
@@ -1413,7 +1415,12 @@ self.addEventListener('fetch', function (event) {
 				return new Response("The URL you have entered is invalid.");
 			}
 		}
-		if ((originUrl.startsWith("http://quickna.me")) || (originUrl.startsWith("https://quickna.me"))) {
+		// Reject links that point back at us. Parse the host instead of substring-matching
+		// the URL: startsWith() let "https://quickna.me.example.com" pass and false-flagged
+		// unrelated hosts (CodeQL js/incomplete-url-substring-sanitization).
+		let originHost = "";
+		try { originHost = new URL(originUrl).hostname.toLowerCase(); } catch (e) { originHost = ""; }
+		if ((originHost === "quickna.me") || (originHost === "www.quickna.me")) {
 			return new Response("Nice try, but that won't work.");
 		}
 
