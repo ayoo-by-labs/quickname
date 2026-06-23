@@ -2,7 +2,7 @@ account_id = "e187dafb9c5a119daf5c9e5496b8aff2"
 
 name = "quickname"
 main = "index.js"
-compatibility_date = "2023-02-03"
+compatibility_date = "2026-06-01"
 
 workers_dev = false
 routes = [
