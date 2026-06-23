@@ -41,7 +41,7 @@ attacker-controlled.
   into KV keys/paths. Any new reflection of user input into HTML must be either regex-constrained
   like this or HTML-escaped.
 - Do **not** interpolate the raw `origin` URL into HTML. It is only stored and redirected to.
-- Reserved aliases (`awnvbg`, `c2VydmljZS13b3JrZXI`) must stay rejected on create.
+- Reserved aliases (`awnvbg`, `c2VydmljZS13b3JrZXI`, `qnmesh`) must stay rejected on create.
 
 ### Secrets & auth
 - `TOTP_SECRET` is an env secret (wrangler `secrets:` / `wrangler secret put`). Never hard-code
