@@ -244,9 +244,8 @@ async function handleRequest(request, randValues, time) {
 
 	<title>${randomTitle()}</title>
 
-	<link rel="icon" nonce="${imageNonce}"
-		href="${iconHref}">
-	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+	<link rel="icon" href="/favicon.ico" sizes="32x32">
+	<link rel="icon" type="image/svg+xml" nonce="${imageNonce}" href="${iconHref}">
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
 	<link rel="manifest" nonce="${manifestNonce}" href="data:application/json;base64,ewoJIm5hbWUiOiAiUXVpY2tuYW1lIiwKCSJkZXNjcmlwdGlvbiI6ICJOb3QgeW91ciBhdmVyYWdlIGxpbmsgc2hvcnRlbmVyLiIsCgkiaWNvbnMiOiBbCgkJewoJCQkic3JjIjogImh0dHBzOi8vcXVpY2tuYS5tZS9hd252YmciLAoJCQkic2l6ZXMiOiAiMTkyeDE5MiIsCgkJCSJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCgkJfSwKCQl7CgkJCSJzcmMiOiAiaHR0cHM6Ly9xdWlja25hLm1lL2F3bnZiZyIsCgkJCSJzaXplcyI6ICI1MTJ4NTEyIiwKCQkJInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIKCQl9CgldLAoJInN0YXJ0X3VybCI6ICJodHRwczovL3F1aWNrbmEubWUiLAoJImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCgkiYmFja2dyb3VuZF9jb2xvciI6ICIjZjNmMGU3IiwKCSJ0aGVtZV9jb2xvciI6ICIjZjNmMGU3IiwKCSJwcmVmZXJfcmVsYXRlZF9hcHBsaWNhdGlvbnMiOiBmYWxzZQp9Cg==">
@@ -735,9 +734,8 @@ async function handleRequest(request, randValues, time) {
 
 	<title>Quickname Link Shortener</title>
 
-	<link rel="icon" nonce="${imageNonce}"
-		href="${iconHref}">
-	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+	<link rel="icon" href="/favicon.ico" sizes="32x32">
+	<link rel="icon" type="image/svg+xml" nonce="${imageNonce}" href="${iconHref}">
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
 	<link rel="manifest" nonce="${manifestNonce}" href="data:application/json;base64,ewoJIm5hbWUiOiAiUXVpY2tuYW1lIiwKCSJkZXNjcmlwdGlvbiI6ICJOb3QgeW91ciBhdmVyYWdlIGxpbmsgc2hvcnRlbmVyLiIsCgkiaWNvbnMiOiBbCgkJewoJCQkic3JjIjogImh0dHBzOi8vcXVpY2tuYS5tZS9hd252YmciLAoJCQkic2l6ZXMiOiAiMTkyeDE5MiIsCgkJCSJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCgkJfSwKCQl7CgkJCSJzcmMiOiAiaHR0cHM6Ly9xdWlja25hLm1lL2F3bnZiZyIsCgkJCSJzaXplcyI6ICI1MTJ4NTEyIiwKCQkJInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIKCQl9CgldLAoJInN0YXJ0X3VybCI6ICJodHRwczovL3F1aWNrbmEubWUiLAoJImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCgkiYmFja2dyb3VuZF9jb2xvciI6ICIjZjNmMGU3IiwKCSJ0aGVtZV9jb2xvciI6ICIjZjNmMGU3IiwKCSJwcmVmZXJfcmVsYXRlZF9hcHBsaWNhdGlvbnMiOiBmYWxzZQp9Cg==">
