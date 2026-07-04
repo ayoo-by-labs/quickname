@@ -11,7 +11,7 @@
 	},
 	"bugs": "https://github.com/ayoo-by-labs/quickname/issues",
 	"homepage": "https://quickna.me",
-	"license": "CC BY-NC-SA 4.0",
+	"license": "PolyForm-Noncommercial-1.0.0",
 	"keywords": [
 		"cf-worker",
 		"cloudflare",
