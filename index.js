@@ -92,13 +92,17 @@ const icon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="117.33 115.41 277
 const iconHref = `data:image/svg+xml;base64,${btoa(icon)}`;
 // Raster/ICO favicons served at their canonical paths (see the GET dispatch below), so
 // browsers that hard-request /favicon.ico or iOS that probes /apple-touch-icon.png get the
-// eagle too — not a stale browser-cached icon. Base64 of branding/favicons/*; regenerate on
+// eagle too, not a stale browser-cached icon. Base64 of branding/favicons/*; regenerate on
 // brand updates. iconBytes decodes to the raw bytes (atob is already used elsewhere here).
 const faviconIco = "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";
 const favicon96 = "iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAQHRFWHRTb2Z0d2FyZQBSZWFsRmF2aWNvbkdlbmVyYXRvciAoaHR0cHM6Ly9yZWFsZmF2aWNvbmdlbmVyYXRvci5uZXQpmZlW4QAAAAlwSFlzAAALEwAACxMBAJqcGAAACkpJREFUeJztnAmQnEUVx78V77O0FC88QEQTwaIIatjsvDebw4ohu9M9YaBMsjuvZ5dVEgJJiAoSEssSkXCUR4l3tMQLReOBB4qCUKUGoogxwaBRFAGPECTh0EAS699f9+Tbnm83x06S2d3+VU3V5ru6v9dfd7/379dJkkgkEolEIpFIJBKJRCKRSCQSiUQikUgkEolEIhEwe2DSM5Xh8+fU+GR7IEkSVe2cpIWXzZg/41n+WGQEqN7O12ihz2uhX2lD65TQT/DTwj/QQv/Qhncrwxf767Xh97lj/1SGf1y/3tA6LbxWG/6C6uk4LjbKXihJ4RVKqKwM3e8M+j9teBf+9j97TmhVtcpP9/fhbyV8uTa8ddC1wjuUoSd842jhiu7no2JDBFQGpj9PGfqqEt5ZN6DwpStXJk/C+Znz3vzcU+d2PB+/rvmFo7PG98xcNPNpXQv4WD1QeGm51vkqPBPH8QxlaMXghqFvdNfanxMbwgGDuK/0ViW0UhvqTZKkLQmoVCY+VRl6TAtf7xsH4G8cQ4+pVCY/I7wPz1KG366FLlGGfunK+lrOdeOP2QP8QgwTSnhzqVqcpoX7y1Xu0VI4Ke96Jfwt9yUv2XOMzk2P0bfz7ikJnaCkUFWGBkpCXVr4zyizUuWXJOOdktAJ2eFh8I9uDMdsGM2O9cLb8HdlAT/bTr5C/wmvxXCkDd0w5POF3pSMd2ajBwjv0IYfUoYuKwvN1UILtNBNzlCbYOTsPWVD57kJ+TIlvNz+XeN3Za+BS6qFN7j55BdK+GxleL42fAUaD/NN7AEOXeXJecZQQqudN7O8wbipx7NVCT+Arz9sJMQKbsJdHc4naHSUGZYXCcAQks4PdFt4Thn6TGY4+Vzjef417oWxw3OR/UAbelAb/lt43E6me+YKndNA96N3RGOPAGV4tpssbwrPVfomv8DHDXnDlzZ8cxrENTZOJByPDS9RQtcpw3fBHfXjuhv/d6Ih8oxmjSy8NvdcrXhqJop+KPWUeLM29CfIFbrKi8b78NSmDZ2jhLZnxvJdbmLdrIU3olHKhqcP9QBEvwMDk54y1Hlliuzihk1hw/qG0YYXJ+MRbehjzkXcpg1fBPng0GpOcF/t/II6fCoZT5RMoc+9+May6TgmPF+pVI5IYwG+Rhv++oh+eIbQAl7JTw7LQdla6A/OXT03GQ9UTMeL7FePSLZnyivzroFOM3R0fGA/6E15+lJZ6LV2jhDa3tU39cXJWEcJXemi2BV558vV4hRntDtUb+dbVU8Hl+ZRYdbc9hP399fd034ynqEN/y7tcYWpeWVqofc6ge7jyVjGjr2GHoOPHkauHmX4LBijXOXzsTDTjF/dwDV+Z5IDImslfB/U1EM5Fx1y6tGr0IKhrtGGl6TGoqXNaoBSjRfZcqu8aOi6pQ2POiZjkVKVX40vTBn+K3T9oa7TwstsD4B41qQG6DbFhaGEHQJ31srUwjvyHINRj13jTT2f/r1c9x43Xr+jWQ1Q9l93oJiGqCqfmRHwxg5YENdCjyMKDQOncq1AytDb6tcKX+C+VtOsBlA1b1i+oF6u0KxyjTqzdUHd0iCQHh9Ti/ha6GoYoFRjaZQh6EFl6E5/TBm60H2Fteb1ABpw4/uFmXLuRGTs1449qKObp65OxgKqjya4zIRNYTCkhVaFQ4NfYDkoQ1BmXaE+2Qu9P1sn1NFKF5DB+2hCMtqpB1W1wryGpUXhRyCSZROq9mQwFBc2exLOxh5I8LI5RsLbQlEOdR0TC/e6xsdbyVh4I+SF7Dkl/BH3BS4dfBxZEXYOWNxsNxTPDspa6nrG5Y1SCMRA3ol3SEYrWuja1KUsnDHoeD8fZQMy4fvCNBItdJWdLwyd16wG0D4OELqqIc0xDcAe7a61vyx7DnV291ybjEZKVT4R8rISWp/N4QHK8CfdStY52ePQYjAsuSHrA01rAEMfdOU9HOo9qENe49hco1TC2IV3SUYbyNFJPZ/inOzxrv7C0TYgE7onzHDzOpEzyJrmNQB/NyPMfThbZprWSPegTqhbUJ/ycPlGLQsyl91y4O2hAlnPdDB8VvY4hgAMBWm2A23BwgmUyhFPwPOmTnRpKP9K84nov6EK62UIBIvBq7Qp4d/YnlztnJSMFrCSlU5uxVKD9IsgR+juUI7QQp/wwRK+Ut9II+4BUjjbTcBX+iAv1HtsyqPQ3XA9u2udrxtUrxp1u/uvS0YD3ab4Flfh2xq/fv6SPVflM7PHu/r4WJucJXwvXNJylV9v/XDDd53RP+24AzZ+z/QJ0J6sYU3HxNT15HvxEeBjyFskQpJwTl7prTiHd0taHSTJpp4PzcoehwF8DmgoR+h09WqQTqQNfdoZ5KMH7H46jwrP8s9Ffmied2MDMKE/wvVEumT2HKQSV5cfJa2MX0xBBvJQGdChHFHyX57Q+mysgJR0qJOpjFzY75jAq6rQn7JyAwythO/Iq4tLXcQ9a8L6I73R3iOF9qRVqSfCCs3Im5QxpGTkiDZtCgutSIclypyAZ05v5xtcCuKusvDyfTF82Uw7BhGvTWcRfmBOb8cbw+fa3ii03Ukki/1Q6QMwlJfdAmXfTWiGa5wbklYEqqZz827OHk9z912iba0wz6Wjn66FbnHXbx0u9QQ+OMZx75q6Zcb8Bqh2TNKGrfsLr2c4zwXjORrI91jsnkFPqQdg6Xu05SR77ca7Jq2GN3KpysXscbd1yC+MZ3OAdmPPFwy312fPP+VI//I2t8fwxTC2Nzx6itvYscV9pbfvy9Ji6iXxdwYv4NPDmX9fkW0EvJu75saklcBitzPOzwZnP9BXnKEfwVhsN9wZ+qE11hAbMIYCvaTBUFX+sqrRaiXB3jDDHcl+YHsZVFi7CZDXYjKuR+TC12SjZyX887QXDF5LaImvH7IyIl8kOrmEKxhqHdzMEZdhaE1dpLMRs0uqSsvYgr0CONcs/QbLkt79TAM5Wo0htGTo3a6MW5JWoNI79eXhTkZXwX8j8EH64EjLKNktRlZV3eB1Jbt6ZYqML9GXYTfkCa1vln6D51pvym2Nbcg12ofh86CTLmDAm+FLsQkOu1dgmGYY3qMNf9NNlqcne0EbPq3Z+g28I+dkLLEplYjahZeFEvuYpOS+fmXo96GqOgRtSui3rhfGPWDNUlW14dP29R6vYo4a/aZV0VI4KVxTwBCQZ1h4VxlNv94LRoV+06pooe9lx/49OUO8reFa7xW57Le6li98/eGo+6hH1/j4VL6gv7vN1Vbkcw3yRBCltvn/E8JrOekOGfqL9dmrxSmH8VVGJ8ot2gfB1zq3QLIb0e+gxK/0a9/gzwe/hl2Ukb2gqzxZC39WGfoiolQf3WKICXN8EAC6BliWybZbgXsRFO5vZBwZhlTM40chtkHuwP+gYrekYjlz/ilHDndvpElowxd57UkZ/mmYdhg5yFQqlSP8urMT374/LqLSVmKm1WlolTL8oeH2G0QikUgkEolEIpFIJBKJRCKRSCQSiUQikUgkEolEksPA/wHkpIKMgfjCOgAAAABJRU5ErkJggg==";
 const appleTouchIcon = "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";
 const iconBytes = (b) => Uint8Array.from(atob(b), (c) => c.charCodeAt(0));
 const faviconHeaders = (ct) => ({ "content-type": ct, "cache-control": "public, max-age=86400" });
+
+// Paths the GET dispatch serves itself; a submitted alias must not shadow them.
+// Compared against the already-lowercased alias, so the entries stay lowercase.
+const reservedPaths = ["awnvbg", "c2vydmljzs13b3jrzxi", "qnmesh"];
 
 async function handleRequest(request, randValues, time) {
 	// Nonce generation must occur prior to defining response bodies.
@@ -107,77 +111,41 @@ async function handleRequest(request, randValues, time) {
 	const scriptNonce = nonceGenerator(randValues, 3);
 	const styleNonce = nonceGenerator(randValues, 4);
 
-	const errorBody = `<!DOCTYPE html>
-<html lang="en-GB">
-
-<head>
-	<meta name="viewport" content="initial-scale=1.0, width=device-width">
-
-	<title>${randomTitle()}</title>
-
-	<link rel="icon" href="/favicon.ico" sizes="32x32">
-	<link rel="icon" type="image/svg+xml" nonce="${imageNonce}" href="${iconHref}">
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-
-	<link rel="manifest" nonce="${manifestNonce}" href="data:application/json;base64,ewoJIm5hbWUiOiAiUXVpY2tuYW1lIiwKCSJkZXNjcmlwdGlvbiI6ICJOb3QgeW91ciBhdmVyYWdlIGxpbmsgc2hvcnRlbmVyLiIsCgkiaWNvbnMiOiBbCgkJewoJCQkic3JjIjogImh0dHBzOi8vcXVpY2tuYS5tZS9hd252YmciLAoJCQkic2l6ZXMiOiAiMTkyeDE5MiIsCgkJCSJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCgkJfSwKCQl7CgkJCSJzcmMiOiAiaHR0cHM6Ly9xdWlja25hLm1lL2F3bnZiZyIsCgkJCSJzaXplcyI6ICI1MTJ4NTEyIiwKCQkJInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIKCQl9CgldLAoJInN0YXJ0X3VybCI6ICJodHRwczovL3F1aWNrbmEubWUiLAoJImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCgkiYmFja2dyb3VuZF9jb2xvciI6ICIjZjNmMGU3IiwKCSJ0aGVtZV9jb2xvciI6ICIjZjNmMGU3IiwKCSJwcmVmZXJfcmVsYXRlZF9hcHBsaWNhdGlvbnMiOiBmYWxzZQp9Cg==">
-
-	<meta name="theme-color" content="#f3f0e7">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-	<script nonce="${scriptNonce}">
-	(function(){try{var u=new URLSearchParams(location.search).get("theme");var p=u||localStorage.getItem("theme")||"auto";var m=p==="auto"?(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"):p;var d=document.documentElement;d.dataset.theme=m;d.dataset.themePref=p;var mc=document.querySelector("meta[name=theme-color]");if(mc)mc.content=m==="dark"?"#0f1622":"#f3f0e7";}catch(e){}})();
-	</script>
-
-	<style nonce="${styleNonce}">
+	// The two HTML documents differ only in their titles and hero copy; the
+	// head, styling, topbar, and tail scripts are shared and defined once here.
+	const sageStyle = `<style nonce="${styleNonce}">
 		@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;450;500;600&display=swap");
 
-		/* ---- Design tokens (ported from ayoo.by Sage main.css 10-108) -------- */
+		/* ---- Design tokens ---------------------------------------------------
+		   Ported from the ayoo.by Sage theme (themes/sage/assets/css/main.css is
+		   the canonical source) and trimmed to what these two pages use; re-port
+		   from there on design changes. */
 		:root {
 			/* Surfaces */
-			--bg:            #f3f0e7;  /* Beige-White */
+			--bg:            #f3f0e7;  /* Beige-white */
 			--bg-warm:       #efe9da;
 			--bg-deep:       #e9e2cf;
-			--surface:       rgba(255, 255, 255, 0.50);
 			--surface-2:     rgba(255, 255, 255, 0.68);
-			--surface-solid: #fbfaf5;
-			--nav-base:      rgba(251, 250, 245, 0.48);
 			--border-glass:  rgba(255, 255, 255, 0.70);
-			--border-soft:   rgba(60, 70, 45, 0.10);
 
-			/* Sage Accent Ramp */
-			--sage-100: #e8ecdf;
-			--sage-200: #d3dcc4;
+			/* Sage accents */
 			--sage-300: #b6c3a2;
-			--sage-400: #94a67d;
-			--sage-500: #7c9063;  /* Primary Accent */
+			--sage-500: #7c9063;  /* Primary accent */
 			--sage-600: #687b52;
 			--sage-700: #51613f;
-			--pill-bg:  #d3dcc4;  /* Shared fill for the active nav item and the blog tag pills. */
 
 			/* Ink */
 			--ink:        #2e342a;
 			--ink-soft:   #586051;
 			--ink-faint:  #8a917c;
-			--sage-invert: #bcd2a2;  /* The opposite theme's sage accent (here, dark's), used for the social-icon hover. */
 
-			/* Misc */
-			--ok:    #5f8a55;
-			--warn:  #c79a3e;
-			--down:  #c2654e;
-
-			--radius-sm: 0.75rem;
-			--radius:    1.25rem;
-			--radius-lg: 2rem;
 			--radius-xl: 2.75rem;
 
 			--shadow-glass: 0 1px 1px rgba(255,255,255,0.55) inset,
 							0 18px 50px -20px rgba(50, 60, 35, 0.30),
 							0 4px 14px -8px rgba(50, 60, 35, 0.25);
-			--shadow-lift:  0 26px 60px -24px rgba(50, 60, 35, 0.38);
 
 			--ease: cubic-bezier(0.22, 1, 0.36, 1);
-			--maxw: 1180px;
 
 			/*
 			 * Background aurora intensity. Light mode gets the stronger values because
@@ -193,38 +161,24 @@ async function handleRequest(request, randValues, time) {
 
 		/* ---- Dark theme (navy base, sage accent kept) ----------------------- */
 		:root[data-theme="dark"] {
-			--bg:            #0f1622;  /* Deep Navy */
+			--bg:            #0f1622;  /* Deep navy */
 			--bg-warm:       #121b29;
 			--bg-deep:       #0b111c;
-			--surface:       rgba(255, 255, 255, 0.055);
 			--surface-2:     rgba(255, 255, 255, 0.10);
-			--surface-solid: #161f2e;
-			--nav-base:      rgba(17, 24, 37, 0.40);
 			--border-glass:  rgba(255, 255, 255, 0.12);
-			--border-soft:   rgba(255, 255, 255, 0.10);
 
-			--sage-100: #1f2a21;
-			--sage-200: #2b3a2c;
 			--sage-300: #41573f;
-			--sage-400: #7e9770;
 			--sage-500: #94ac7d;
-			--sage-600: #a7bf8f;  /* Accent Text — Lighter on Navy */
+			--sage-600: #a7bf8f;  /* Accent text, lighter on navy */
 			--sage-700: #bcd2a2;
-			--pill-bg:  #1f2a21;  /* The dark-mode pill fill stays at the deep sage tint. */
 
 			--ink:        #e8ecdf;
 			--ink-soft:   #a9b3a4;
 			--ink-faint:  #79838c;
-			--sage-invert: #51613f;  /* The opposite theme's sage accent (here, light's), used for the social-icon hover. */
-
-			--ok:   #79b06a;
-			--warn: #d8b25a;
-			--down: #d97a62;
 
 			--shadow-glass: 0 1px 1px rgba(255,255,255,0.06) inset,
 							0 18px 50px -20px rgba(0,0,0,0.65),
 							0 4px 14px -8px rgba(0,0,0,0.55);
-			--shadow-lift:  0 26px 60px -24px rgba(0,0,0,0.72);
 
 			--aurora-tint-1:      rgba(124, 144, 99, 0.13);
 			--aurora-tint-2:      rgba(148, 166, 125, 0.15);
@@ -233,7 +187,7 @@ async function handleRequest(request, randValues, time) {
 			--aurora-blob-opacity: 0.5;
 		}
 
-		/* ---- Reset (main.css 110-128) --------------------------------------- */
+		/* ---- Reset ---------------------------------------------------------- */
 		*, *::before, *::after { box-sizing: border-box; }
 		* { margin: 0; }
 		html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
@@ -262,14 +216,14 @@ async function handleRequest(request, randValues, time) {
 			font-optical-sizing: auto;
 		}
 
-		/* Focus Visibility (a11y) */
+		/* Focus visibility (a11y) */
 		:where(a, button, input, [tabindex]):focus-visible {
 			outline: 2px solid var(--sage-500);
 			outline-offset: 3px;
 			border-radius: 6px;
 		}
 
-		/* ---- Animated aurora background (main.css 146-179) ------------------ */
+		/* ---- Animated aurora background -------------------------------------- */
 		.aurora {
 			position: fixed;
 			inset: 0;
@@ -304,17 +258,7 @@ async function handleRequest(request, randValues, time) {
 		@keyframes drift1 { to { transform: translate(14vw, 10vh) scale(1.15); } }
 		@keyframes drift2 { to { transform: translate(-12vw, -8vh) scale(1.2); } }
 
-		/* ---- Glass primitive (main.css 192-200) ----------------------------- */
-		.glass {
-			background: var(--surface);
-			backdrop-filter: blur(20px) saturate(150%);
-			-webkit-backdrop-filter: blur(20px) saturate(150%);
-			border: 1px solid var(--border-glass);
-			border-radius: var(--radius);
-			box-shadow: var(--shadow-glass);
-		}
-
-		/* ---- Buttons (main.css 214-224) ------------------------------------- */
+		/* ---- Buttons --------------------------------------------------------- */
 		.btn {
 			display: inline-flex; align-items: center; gap: 0.55rem;
 			padding: 0.7rem 1.25rem;
@@ -323,19 +267,18 @@ async function handleRequest(request, randValues, time) {
 			transition: transform 0.35s var(--ease), background 0.35s var(--ease), box-shadow 0.35s var(--ease), color 0.35s var(--ease);
 			will-change: transform;
 		}
-		.btn .ico { width: 1.05em; height: 1.05em; }
 		.btn:hover { transform: translateY(-2px); }
 		.btn:active { transform: translateY(0) scale(0.98); }
 
-		/* ---- Theme switch (main.css 281-290) -------------------------------- */
+		/* ---- Theme switch ---------------------------------------------------- */
 		.theme-switch { display: inline-flex; align-items: center; gap: 0.1rem; padding: 0.2rem; border-radius: 999px; }
 		.theme-switch__btn { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border-radius: 999px; color: var(--ink); transition: color 0.3s var(--ease), background 0.3s var(--ease); }
 		.theme-switch__btn .ico { width: 1.05rem; height: 1.05rem; }
-		/* The selected option takes the inverse of the social-icon choice — the same-theme
-		   sage accent on a glass pill — so it stays clearly visible as the active mark. */
+		/* The selected option sits on a glass pill in the same-theme sage accent,
+		   so it stays clearly visible as the active mark. */
 		.theme-switch__btn.is-active { background: var(--surface-2); color: var(--sage-700); box-shadow: 0 1px 1px rgba(255,255,255,0.5) inset; }
 
-		/* ---- Glass top "reflection" — sheen across the glassy chips (main.css 304-312) */
+		/* Glass top reflection: the light catching the rim of the chip. */
 		.theme-switch { position: relative; }
 		.theme-switch::after {
 			content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
@@ -345,11 +288,8 @@ async function handleRequest(request, randValues, time) {
 			background: linear-gradient(180deg, rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.05) 36%, transparent 62%);
 		}
 
-		/* ---- Glass chips: shared frosted surface (main.css 343-388) --------- */
-		/*
-		 * The theme switcher shares one frosted-glass surface: the diagonal sheen,
-		 * vibrant backdrop blur, rim highlight and lifting shadow are defined here.
-		 */
+		/* The frosted-glass chip surface: diagonal sheen, backdrop blur, rim
+		   highlight and lifting shadow. */
 		.theme-switch {
 			background: linear-gradient(140deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.18) 100%);
 			backdrop-filter: blur(10px) saturate(125%);
@@ -366,7 +306,7 @@ async function handleRequest(request, randValues, time) {
 			background: linear-gradient(140deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.04) 100%);
 		}
 
-		/* ---- Hero (main.css 390-524, OMITTING .hero-corner*) ---------------- */
+		/* ---- Hero ------------------------------------------------------------ */
 		.hero { padding-top: 1rem; }
 		.hero__stage {
 			position: relative;
@@ -385,7 +325,7 @@ async function handleRequest(request, randValues, time) {
 			min-height: min(88vh, 780px);
 			display: flex; flex-direction: column; align-items: center; justify-content: center;
 		}
-		/* A slow-drifting sheen keeps the glass feeling alive without needing a video. */
+		/* A slow-drifting sheen keeps the glass feeling alive. */
 		.hero__stage::before {
 			content: ""; position: absolute; inset: -20%;
 			background: radial-gradient(38% 38% at 30% 30%, rgba(148,166,125,0.22), transparent 70%),
@@ -396,13 +336,13 @@ async function handleRequest(request, randValues, time) {
 		}
 		@keyframes hero-drift { to { transform: translate3d(4%, -3%, 0) scale(1.08); } }
 
-		/* Top Bar */
+		/* Top bar */
 		.hero__topbar {
 			position: absolute; top: 0; left: 0; right: 0; z-index: 4;
 			display: flex; align-items: center; justify-content: flex-end;
 			padding: clamp(1rem, 2.4vw, 1.6rem) clamp(1.2rem, 3vw, 2.2rem);
 		}
-		/* On the home hero the switcher keeps the sage-green accent that the old "Let's talk" button used. */
+		/* The topbar switcher is a solid sage chip, not neutral glass. */
 		.hero__topbar .theme-switch {
 			background: var(--sage-600);
 			box-shadow: 0 12px 26px -14px rgba(81, 97, 63, 0.9);
@@ -411,16 +351,15 @@ async function handleRequest(request, randValues, time) {
 		.hero__topbar .theme-switch__btn:hover { color: #fff; }
 		.hero__topbar .theme-switch__btn.is-active { background: rgba(255, 255, 255, 0.24); color: #fff; box-shadow: none; }
 
-		/* Centered Headline */
+		/* Centred headline */
 		.hero__head { position: relative; z-index: 2; width: 100%; max-width: 60rem; padding: 0 clamp(1.25rem, 5vw, 2rem); text-align: center; display: flex; flex-direction: column; align-items: center; }
 		.hero h1 { font-size: clamp(2.9rem, 9.5vw, 6.8rem); letter-spacing: -0.035em; line-height: 1.02; margin: 0; }
 		/* The first part takes the sage accent and the second stays ink italic. The right
 		   padding on the second part stops its italic final letter from being clipped. */
 		.hero__fn { color: var(--sage-600); }
 		.hero__ln { color: var(--ink); font-style: italic; font-weight: 400; padding-right: 0.12em; }
-		.hero__socials { margin-top: 1.8rem; }
 
-		/* Mesh Gradient Canvas */
+		/* Mesh gradient canvas */
 		.hero__gradient {
 			position: absolute;
 			inset: 0;
@@ -435,7 +374,7 @@ async function handleRequest(request, randValues, time) {
 			 * border-radius: inherit clips to the stage's --radius-xl rounded corners.
 			 */
 
-			/* Light Theme Gradient Colors */
+			/* Light theme gradient colours */
 			--gradient-color-1: #b6c3a2;
 			--gradient-color-2: #e8ecdf;
 			--gradient-color-3: #94a67d;
@@ -443,20 +382,20 @@ async function handleRequest(request, randValues, time) {
 		}
 
 		:root[data-theme="dark"] .hero__gradient {
-			/* Dark Theme Gradient Colors — navy base (1-3), one muted sage inflection (4) */
+			/* Dark theme gradient colours: navy base (1-3), one muted sage inflection (4) */
 			--gradient-color-1: #131c2a;
 			--gradient-color-2: #0f1622;
 			--gradient-color-3: #1c2738;
 			--gradient-color-4: #33452b;
 		}
 
-		/* Hero Responsive */
+		/* Hero responsive */
 		@media (max-width: 620px) {
 			.hero__stage { border-radius: 1.75rem; }
 			.hero__topbar { padding: 0.9rem 1rem; }
 		}
 
-		/* ---- Dark-mode overrides (main.css 637-646) ------------------------- */
+		/* ---- Dark-mode overrides --------------------------------------------- */
 		[data-theme="dark"] .hero__topbar .theme-switch { background: var(--sage-500); }
 		[data-theme="dark"] .hero__topbar .theme-switch__btn { color: rgba(16, 22, 31, 0.6); }
 		[data-theme="dark"] .hero__topbar .theme-switch__btn:hover { color: #10161f; }
@@ -468,22 +407,20 @@ async function handleRequest(request, randValues, time) {
 				rgba(255,255,255,0.03);
 		}
 
-		/* ---- No-scroll home: hero fills the viewport (main.css 650-653) ----- */
+		/* ---- No-scroll home: hero fills the viewport -------------------------- */
 		body.is-home { height: 100dvh; overflow: hidden; display: flex; flex-direction: column; }
 		body.is-home main { flex: 1; min-height: 0; min-width: 0; display: flex; flex-direction: column; }
 		body.is-home .hero { flex: 1; min-height: 0; min-width: 0; display: flex; flex-direction: column; padding: clamp(1rem, 3vh, 2.25rem) clamp(1.25rem, 4vw, 3rem); }
 		body.is-home .hero__stage { flex: 1; min-height: 0; min-width: 0; }
 
-		/* ---- Entrance animations (main.css 655-665) ------------------------- */
+		/* ---- Entrance animations ---------------------------------------------- */
 		@keyframes fade-up   { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
 		@keyframes fade-in   { from { opacity: 0; } to { opacity: 1; } }
-		@keyframes scale-in  { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: none; } }
 
 		.enter { opacity: 0; animation: fade-up 0.9s var(--ease) forwards; animation-delay: var(--d, 0s); }
-		.enter--scale { animation-name: scale-in; }
 		.enter--fade  { animation-name: fade-in; }
 
-		/* ---- New form CSS (spec §5) — frosted fields over the mesh ---------- */
+		/* ---- Form: frosted fields over the mesh -------------------------------- */
 		.tagline { margin-top: 1rem; color: var(--ink-soft); font-size: clamp(1rem, 1.4vw, 1.12rem); }
 		.tagline s { color: var(--ink-faint); }
 		.qn-form { margin-top: 1.8rem; width: 100%; max-width: 26rem; display: flex; flex-direction: column; gap: 0.7rem; }
@@ -497,49 +434,124 @@ async function handleRequest(request, randValues, time) {
 		.field::placeholder { color: var(--ink-faint); }
 		.field:focus, .field:focus-visible { outline: none; border-color: var(--border-glass); }
 		.qn-form .btn { position: relative; isolation: isolate; align-self: center; margin-top: 0.4rem; color: #fff; background: var(--sage-600); box-shadow: 0 12px 26px -14px rgba(81,97,63,0.9); }
-		/* Glossy top reflection — matches the hero theme-switch / Ayooby labs-pill. z-index keeps the label crisp above the sheen. */
+		/* Glossy top reflection, matching the hero theme-switch. z-index keeps the label crisp above the sheen. */
 		.qn-form .btn::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: -1; background: linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.08) 34%, transparent 60%); }
 		[data-theme="dark"] .qn-form .btn { background: var(--sage-500); color: #10161f; }
 		[data-theme="dark"] .qn-form .btn::after { background: linear-gradient(180deg, rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.05) 36%, transparent 62%); }
 		.status { display: block; min-height: 1.4em; margin-top: 1rem; color: var(--ink-soft); font-size: 0.95rem; }
 		.status a { color: var(--sage-700); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--sage-300); font-weight: 500; }
 
-		/* ---- Entrance stagger delays ---------------------------------------- */
+		/* ---- Entrance stagger delays ------------------------------------------- */
 		.hero__topbar .enter { --d: .1s; }
 		.hero__head .enter:nth-child(1) { --d: .08s; }
 		.hero__head .enter:nth-child(2) { --d: .16s; }
 		.hero__head .enter:nth-child(3) { --d: .24s; }
 
-		/* ---- 404 heading + sad face ----------------------------------------- */
+		/* ---- 404 heading + sad face --------------------------------------------- */
 		.oops { font-family: "Fraunces", Georgia, "Times New Roman", serif; font-optical-sizing: auto; font-weight: 600; font-style: normal; color: var(--ink); font-size: clamp(2rem, 6vw, 3.4rem); line-height: 1.06; letter-spacing: -0.02em; }
 		.sad { margin-top: 0.8rem; font-family: "Fraunces", Georgia, serif; font-size: clamp(1.8rem, 6vw, 2.6rem); color: var(--ink-soft); }
 
-		/* ---- Reduced motion (main.css 667-676) ------------------------------ */
+		/* ---- Reduced motion ----------------------------------------------------- */
 		@media (prefers-reduced-motion: reduce) {
 			html { scroll-behavior: auto; }
 			*, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 			.enter { opacity: 1 !important; transform: none !important; }
-			/* Gradient canvas hidden — static radial fallback background shows instead */
+			/* Gradient canvas hidden; the static radial fallback background shows instead. */
 			.hero__gradient { display: none; }
-			/* Drift sheen stops (the wildcard above already fires at 0.01ms, but explicit is safer) */
+			/* Drift sheen stops (the wildcard above already fires at 0.01ms, but explicit is safer). */
 			.hero__stage::before { animation: none; }
 		}
-	</style>
-</head>
+	</style>`;
 
-<body class="is-home">
-	<div class="aurora" aria-hidden="true"></div>
-	<main>
-		<section class="hero">
-			<div class="hero__stage">
-				<canvas id="hero-gradient" class="hero__gradient" data-hero-gradient aria-hidden="true"></canvas>
+	const themeInit = `<script nonce="${scriptNonce}">
+	(function(){try{var u=new URLSearchParams(location.search).get("theme");var p=u||localStorage.getItem("theme")||"auto";var m=p==="auto"?(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"):p;var d=document.documentElement;d.dataset.theme=m;d.dataset.themePref=p;var mc=document.querySelector("meta[name=theme-color]");if(mc)mc.content=m==="dark"?"#0f1622":"#f3f0e7";}catch(e){}})();
+	</script>`;
+
+	const pageHead = (title) => `<head>
+	<meta name="viewport" content="initial-scale=1.0, width=device-width">
+
+	<title>${title}</title>
+
+	<link rel="icon" href="/favicon.ico" sizes="32x32">
+	<link rel="icon" type="image/svg+xml" nonce="${imageNonce}" href="${iconHref}">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+	<link rel="manifest" nonce="${manifestNonce}" href="data:application/json;base64,ewoJIm5hbWUiOiAiUXVpY2tuYW1lIiwKCSJkZXNjcmlwdGlvbiI6ICJOb3QgeW91ciBhdmVyYWdlIGxpbmsgc2hvcnRlbmVyLiIsCgkiaWNvbnMiOiBbCgkJewoJCQkic3JjIjogImh0dHBzOi8vcXVpY2tuYS5tZS9hd252YmciLAoJCQkic2l6ZXMiOiAiMTkyeDE5MiIsCgkJCSJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCgkJfSwKCQl7CgkJCSJzcmMiOiAiaHR0cHM6Ly9xdWlja25hLm1lL2F3bnZiZyIsCgkJCSJzaXplcyI6ICI1MTJ4NTEyIiwKCQkJInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIKCQl9CgldLAoJInN0YXJ0X3VybCI6ICJodHRwczovL3F1aWNrbmEubWUiLAoJImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCgkiYmFja2dyb3VuZF9jb2xvciI6ICIjZjNmMGU3IiwKCSJ0aGVtZV9jb2xvciI6ICIjZjNmMGU3IiwKCSJwcmVmZXJfcmVsYXRlZF9hcHBsaWNhdGlvbnMiOiBmYWxzZQp9Cg==">
+
+	<meta name="theme-color" content="#f3f0e7">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+	${themeInit}
+
+	${sageStyle}
+</head>`;
+
+	const heroTopbar = `				<canvas id="hero-gradient" class="hero__gradient" data-hero-gradient aria-hidden="true"></canvas>
 				<div class="hero__topbar">
 					<div class="theme-switch enter enter--fade" role="group" aria-label="Colour theme">
 						<button class="theme-switch__btn" type="button" data-theme-set="light" aria-label="Light theme" title="Light"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
 						<button class="theme-switch__btn" type="button" data-theme-set="auto" aria-label="Match system theme" title="System"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></button>
 						<button class="theme-switch__btn" type="button" data-theme-set="dark" aria-label="Dark theme" title="Dark"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></button>
 					</div>
-				</div>
+				</div>`;
+
+	const pageScripts = `	<script src="/qnmesh" nonce="${scriptNonce}"></script>
+	<script nonce="${scriptNonce}">
+	(function(){
+		var root = document.documentElement;
+		var mql = matchMedia("(prefers-color-scheme:dark)");
+		var resolve = function(p){ return p==="auto" ? (mql.matches?"dark":"light") : p; };
+		var reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
+		var stage = document.querySelector(".hero__stage");
+		var grad = null, lastMode = root.dataset.theme || resolve(root.dataset.themePref||"auto");
+		function teardown(){
+			if(!grad) return;
+			try { grad.pause(); grad.disconnect(); var ext = grad.minigl && grad.minigl.gl && grad.minigl.gl.getExtension("WEBGL_lose_context"); if(ext) ext.loseContext(); } catch(e){}
+			var old = document.getElementById("hero-gradient"); if(old) old.remove();
+			grad = null;
+		}
+		function spawn(){
+			if(reduce || !stage || typeof Gradient==="undefined") return;
+			teardown();
+			var c = document.createElement("canvas");
+			c.id="hero-gradient"; c.className="hero__gradient"; c.setAttribute("data-hero-gradient",""); c.setAttribute("aria-hidden","true");
+			stage.insertBefore(c, stage.firstChild);
+			grad = new Gradient(); grad.initGradient("#hero-gradient");
+		}
+		var btns = [].slice.call(document.querySelectorAll(".theme-switch__btn[data-theme-set]"));
+		function paintBtns(pref){ btns.forEach(function(b){ var on=b.dataset.themeSet===pref; b.classList.toggle("is-active",on); b.setAttribute("aria-pressed",String(on)); }); }
+		function apply(pref){
+			var mode = resolve(pref);
+			root.dataset.theme=mode; root.dataset.themePref=pref;
+			try { localStorage.setItem("theme",pref); } catch(e){}
+			var mc=document.querySelector("meta[name=theme-color]"); if(mc) mc.content=mode==="dark"?"#0f1622":"#f3f0e7";
+			paintBtns(pref);
+			if(mode!==lastMode){ lastMode=mode; spawn(); }
+		}
+		btns.forEach(function(b){ b.addEventListener("click", function(){ apply(b.dataset.themeSet); }); });
+		mql.addEventListener("change", function(){ if((root.dataset.themePref||"auto")==="auto") apply("auto"); });
+		paintBtns(root.dataset.themePref||"auto");
+		spawn(); // First paint (server-rendered canvas already present; spawn replaces it cleanly).
+	})();
+	</script>
+	<script nonce="${scriptNonce}">
+		if ('serviceWorker' in navigator) {
+			navigator.serviceWorker.register("c2VydmljZS13b3JrZXI");
+		}
+	</script>`;
+
+	const errorBody = `<!DOCTYPE html>
+<html lang="en-GB">
+
+${pageHead(randomTitle())}
+
+<body class="is-home">
+	<div class="aurora" aria-hidden="true"></div>
+	<main>
+		<section class="hero">
+			<div class="hero__stage">
+${heroTopbar}
 				<div class="hero__head">
 					<h1 class="oops enter">This is not the page you were looking for<span class="hero__fn">.</span></h1>
 					<p class="sad enter">:'(</p>
@@ -547,553 +559,78 @@ async function handleRequest(request, randValues, time) {
 			</div>
 		</section>
 	</main>
-	<script src="/qnmesh" nonce="${scriptNonce}"></script>
-	<script nonce="${scriptNonce}">
-	(function(){
-		var root = document.documentElement;
-		var mql = matchMedia("(prefers-color-scheme:dark)");
-		var resolve = function(p){ return p==="auto" ? (mql.matches?"dark":"light") : p; };
-		var reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
-		var stage = document.querySelector(".hero__stage");
-		var grad = null, lastMode = root.dataset.theme || resolve(root.dataset.themePref||"auto");
-		function teardown(){
-			if(!grad) return;
-			try { grad.pause(); grad.disconnect(); var ext = grad.minigl && grad.minigl.gl && grad.minigl.gl.getExtension("WEBGL_lose_context"); if(ext) ext.loseContext(); } catch(e){}
-			var old = document.getElementById("hero-gradient"); if(old) old.remove();
-			grad = null;
-		}
-		function spawn(){
-			if(reduce || !stage || typeof Gradient==="undefined") return;
-			teardown();
-			var c = document.createElement("canvas");
-			c.id="hero-gradient"; c.className="hero__gradient"; c.setAttribute("data-hero-gradient",""); c.setAttribute("aria-hidden","true");
-			stage.insertBefore(c, stage.firstChild);
-			grad = new Gradient(); grad.initGradient("#hero-gradient");
-		}
-		var btns = [].slice.call(document.querySelectorAll(".theme-switch__btn[data-theme-set]"));
-		function paintBtns(pref){ btns.forEach(function(b){ var on=b.dataset.themeSet===pref; b.classList.toggle("is-active",on); b.setAttribute("aria-pressed",String(on)); }); }
-		function apply(pref){
-			var mode = resolve(pref);
-			root.dataset.theme=mode; root.dataset.themePref=pref;
-			try { localStorage.setItem("theme",pref); } catch(e){}
-			var mc=document.querySelector("meta[name=theme-color]"); if(mc) mc.content=mode==="dark"?"#0f1622":"#f3f0e7";
-			paintBtns(pref);
-			if(mode!==lastMode){ lastMode=mode; spawn(); }
-		}
-		btns.forEach(function(b){ b.addEventListener("click", function(){ apply(b.dataset.themeSet); }); });
-		mql.addEventListener("change", function(){ if((root.dataset.themePref||"auto")==="auto") apply("auto"); });
-		paintBtns(root.dataset.themePref||"auto");
-		spawn(); // First paint (server-rendered canvas already present; spawn replaces it cleanly).
-	})();
-	</script>
-	<script nonce="${scriptNonce}">
-		const divInstall = document.getElementById("installContainer");
-		const butInstall = document.getElementById("butInstall");
-
-		if ('serviceWorker' in navigator) {
-  			navigator.serviceWorker.register("c2VydmljZS13b3JrZXI");
-		}
-	</script>
+${pageScripts}
 </body>
 
-</html>`
+</html>`;
+
 	const formBody = `<!DOCTYPE html>
 <html lang="en-GB">
 
-<head>
-	<meta name="viewport" content="initial-scale=1.0, width=device-width">
-
-	<title>Quickname Link Shortener</title>
-
-	<link rel="icon" href="/favicon.ico" sizes="32x32">
-	<link rel="icon" type="image/svg+xml" nonce="${imageNonce}" href="${iconHref}">
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-
-	<link rel="manifest" nonce="${manifestNonce}" href="data:application/json;base64,ewoJIm5hbWUiOiAiUXVpY2tuYW1lIiwKCSJkZXNjcmlwdGlvbiI6ICJOb3QgeW91ciBhdmVyYWdlIGxpbmsgc2hvcnRlbmVyLiIsCgkiaWNvbnMiOiBbCgkJewoJCQkic3JjIjogImh0dHBzOi8vcXVpY2tuYS5tZS9hd252YmciLAoJCQkic2l6ZXMiOiAiMTkyeDE5MiIsCgkJCSJ0eXBlIjogImltYWdlL3N2Zyt4bWwiCgkJfSwKCQl7CgkJCSJzcmMiOiAiaHR0cHM6Ly9xdWlja25hLm1lL2F3bnZiZyIsCgkJCSJzaXplcyI6ICI1MTJ4NTEyIiwKCQkJInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIKCQl9CgldLAoJInN0YXJ0X3VybCI6ICJodHRwczovL3F1aWNrbmEubWUiLAoJImRpc3BsYXkiOiAic3RhbmRhbG9uZSIsCgkiYmFja2dyb3VuZF9jb2xvciI6ICIjZjNmMGU3IiwKCSJ0aGVtZV9jb2xvciI6ICIjZjNmMGU3IiwKCSJwcmVmZXJfcmVsYXRlZF9hcHBsaWNhdGlvbnMiOiBmYWxzZQp9Cg==">
-
-	<meta name="theme-color" content="#f3f0e7">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-	<script nonce="${scriptNonce}">
-	(function(){try{var u=new URLSearchParams(location.search).get("theme");var p=u||localStorage.getItem("theme")||"auto";var m=p==="auto"?(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"):p;var d=document.documentElement;d.dataset.theme=m;d.dataset.themePref=p;var mc=document.querySelector("meta[name=theme-color]");if(mc)mc.content=m==="dark"?"#0f1622":"#f3f0e7";}catch(e){}})();
-	</script>
-
-	<style nonce="${styleNonce}">
-		@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;450;500;600&display=swap");
-
-		/* ---- Design tokens (ported from ayoo.by Sage main.css 10-108) -------- */
-		:root {
-			/* Surfaces */
-			--bg:            #f3f0e7;  /* Beige-White */
-			--bg-warm:       #efe9da;
-			--bg-deep:       #e9e2cf;
-			--surface:       rgba(255, 255, 255, 0.50);
-			--surface-2:     rgba(255, 255, 255, 0.68);
-			--surface-solid: #fbfaf5;
-			--nav-base:      rgba(251, 250, 245, 0.48);
-			--border-glass:  rgba(255, 255, 255, 0.70);
-			--border-soft:   rgba(60, 70, 45, 0.10);
-
-			/* Sage Accent Ramp */
-			--sage-100: #e8ecdf;
-			--sage-200: #d3dcc4;
-			--sage-300: #b6c3a2;
-			--sage-400: #94a67d;
-			--sage-500: #7c9063;  /* Primary Accent */
-			--sage-600: #687b52;
-			--sage-700: #51613f;
-			--pill-bg:  #d3dcc4;  /* Shared fill for the active nav item and the blog tag pills. */
-
-			/* Ink */
-			--ink:        #2e342a;
-			--ink-soft:   #586051;
-			--ink-faint:  #8a917c;
-			--sage-invert: #bcd2a2;  /* The opposite theme's sage accent (here, dark's), used for the social-icon hover. */
-
-			/* Misc */
-			--ok:    #5f8a55;
-			--warn:  #c79a3e;
-			--down:  #c2654e;
-
-			--radius-sm: 0.75rem;
-			--radius:    1.25rem;
-			--radius-lg: 2rem;
-			--radius-xl: 2.75rem;
-
-			--shadow-glass: 0 1px 1px rgba(255,255,255,0.55) inset,
-							0 18px 50px -20px rgba(50, 60, 35, 0.30),
-							0 4px 14px -8px rgba(50, 60, 35, 0.25);
-			--shadow-lift:  0 26px 60px -24px rgba(50, 60, 35, 0.38);
-
-			--ease: cubic-bezier(0.22, 1, 0.36, 1);
-			--maxw: 1180px;
-
-			/*
-			 * Background aurora intensity. Light mode gets the stronger values because
-			 * sage-green reads faintly against the warm beige; dark mode dials these back
-			 * since the same green already pops against the navy.
-			 */
-			--aurora-tint-1:      rgba(124, 144, 99, 0.22);
-			--aurora-tint-2:      rgba(148, 166, 125, 0.26);
-			--aurora-blob-1:      rgba(148, 166, 125, 0.75);
-			--aurora-blob-2:      rgba(124, 144, 99, 0.62);
-			--aurora-blob-opacity: 0.8;
-		}
-
-		/* ---- Dark theme (navy base, sage accent kept) ----------------------- */
-		:root[data-theme="dark"] {
-			--bg:            #0f1622;  /* Deep Navy */
-			--bg-warm:       #121b29;
-			--bg-deep:       #0b111c;
-			--surface:       rgba(255, 255, 255, 0.055);
-			--surface-2:     rgba(255, 255, 255, 0.10);
-			--surface-solid: #161f2e;
-			--nav-base:      rgba(17, 24, 37, 0.40);
-			--border-glass:  rgba(255, 255, 255, 0.12);
-			--border-soft:   rgba(255, 255, 255, 0.10);
-
-			--sage-100: #1f2a21;
-			--sage-200: #2b3a2c;
-			--sage-300: #41573f;
-			--sage-400: #7e9770;
-			--sage-500: #94ac7d;
-			--sage-600: #a7bf8f;  /* Accent Text — Lighter on Navy */
-			--sage-700: #bcd2a2;
-			--pill-bg:  #1f2a21;  /* The dark-mode pill fill stays at the deep sage tint. */
-
-			--ink:        #e8ecdf;
-			--ink-soft:   #a9b3a4;
-			--ink-faint:  #79838c;
-			--sage-invert: #51613f;  /* The opposite theme's sage accent (here, light's), used for the social-icon hover. */
-
-			--ok:   #79b06a;
-			--warn: #d8b25a;
-			--down: #d97a62;
-
-			--shadow-glass: 0 1px 1px rgba(255,255,255,0.06) inset,
-							0 18px 50px -20px rgba(0,0,0,0.65),
-							0 4px 14px -8px rgba(0,0,0,0.55);
-			--shadow-lift:  0 26px 60px -24px rgba(0,0,0,0.72);
-
-			--aurora-tint-1:      rgba(124, 144, 99, 0.13);
-			--aurora-tint-2:      rgba(148, 166, 125, 0.15);
-			--aurora-blob-1:      rgba(148, 166, 125, 0.50);
-			--aurora-blob-2:      rgba(124, 144, 99, 0.42);
-			--aurora-blob-opacity: 0.5;
-		}
-
-		/* ---- Reset (main.css 110-128) --------------------------------------- */
-		*, *::before, *::after { box-sizing: border-box; }
-		* { margin: 0; }
-		html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
-		body {
-			font-family: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
-			font-weight: 400;
-			color: var(--ink);
-			background: var(--bg);
-			line-height: 1.6;
-			overflow-x: hidden;
-			-webkit-font-smoothing: antialiased;
-			text-rendering: optimizeLegibility;
-			min-height: 100dvh;
-		}
-		img, svg, video { display: block; max-width: 100%; }
-		a { color: inherit; text-decoration: none; }
-		button { font: inherit; color: inherit; cursor: pointer; border: 0; background: none; }
-		::selection { background: var(--sage-300); color: var(--sage-700); }
-
-		h1, h2, h3, h4 {
-			font-family: "Fraunces", Georgia, "Times New Roman", serif;
-			font-weight: 500;
-			line-height: 1.05;
-			letter-spacing: -0.02em;
-			color: var(--ink);
-			font-optical-sizing: auto;
-		}
-
-		/* Focus Visibility (a11y) */
-		:where(a, button, input, [tabindex]):focus-visible {
-			outline: 2px solid var(--sage-500);
-			outline-offset: 3px;
-			border-radius: 6px;
-		}
-
-		/* ---- Animated aurora background (main.css 146-179) ------------------ */
-		.aurora {
-			position: fixed;
-			inset: 0;
-			z-index: -1;
-			overflow: hidden;
-			background:
-				radial-gradient(120% 120% at 100% 0%, var(--aurora-tint-1), transparent 55%),
-				radial-gradient(120% 120% at 0% 100%, var(--aurora-tint-2), transparent 50%),
-				linear-gradient(180deg, var(--bg) 0%, var(--bg-warm) 60%, var(--bg-deep) 100%);
-		}
-		.aurora::before,
-		.aurora::after {
-			content: "";
-			position: absolute;
-			width: 52vw;
-			height: 52vw;
-			border-radius: 50%;
-			filter: blur(80px);
-			opacity: var(--aurora-blob-opacity);
-			will-change: transform;
-		}
-		.aurora::before {
-			top: -12vw; left: -8vw;
-			background: radial-gradient(circle, var(--aurora-blob-1), transparent 70%);
-			animation: drift1 26s var(--ease) infinite alternate;
-		}
-		.aurora::after {
-			bottom: -14vw; right: -10vw;
-			background: radial-gradient(circle, var(--aurora-blob-2), transparent 70%);
-			animation: drift2 32s var(--ease) infinite alternate;
-		}
-		@keyframes drift1 { to { transform: translate(14vw, 10vh) scale(1.15); } }
-		@keyframes drift2 { to { transform: translate(-12vw, -8vh) scale(1.2); } }
-
-		/* ---- Glass primitive (main.css 192-200) ----------------------------- */
-		.glass {
-			background: var(--surface);
-			backdrop-filter: blur(20px) saturate(150%);
-			-webkit-backdrop-filter: blur(20px) saturate(150%);
-			border: 1px solid var(--border-glass);
-			border-radius: var(--radius);
-			box-shadow: var(--shadow-glass);
-		}
-
-		/* ---- Buttons (main.css 214-224) ------------------------------------- */
-		.btn {
-			display: inline-flex; align-items: center; gap: 0.55rem;
-			padding: 0.7rem 1.25rem;
-			border-radius: 999px;
-			font-weight: 500; font-size: 0.95rem;
-			transition: transform 0.35s var(--ease), background 0.35s var(--ease), box-shadow 0.35s var(--ease), color 0.35s var(--ease);
-			will-change: transform;
-		}
-		.btn .ico { width: 1.05em; height: 1.05em; }
-		.btn:hover { transform: translateY(-2px); }
-		.btn:active { transform: translateY(0) scale(0.98); }
-
-		/* ---- Theme switch (main.css 281-290) -------------------------------- */
-		.theme-switch { display: inline-flex; align-items: center; gap: 0.1rem; padding: 0.2rem; border-radius: 999px; }
-		.theme-switch__btn { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border-radius: 999px; color: var(--ink); transition: color 0.3s var(--ease), background 0.3s var(--ease); }
-		.theme-switch__btn .ico { width: 1.05rem; height: 1.05rem; }
-		/* The selected option takes the inverse of the social-icon choice — the same-theme
-		   sage accent on a glass pill — so it stays clearly visible as the active mark. */
-		.theme-switch__btn.is-active { background: var(--surface-2); color: var(--sage-700); box-shadow: 0 1px 1px rgba(255,255,255,0.5) inset; }
-
-		/* ---- Glass top "reflection" — sheen across the glassy chips (main.css 304-312) */
-		.theme-switch { position: relative; }
-		.theme-switch::after {
-			content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
-			background: linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.08) 34%, transparent 60%);
-		}
-		[data-theme="dark"] .theme-switch::after {
-			background: linear-gradient(180deg, rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.05) 36%, transparent 62%);
-		}
-
-		/* ---- Glass chips: shared frosted surface (main.css 343-388) --------- */
-		/*
-		 * The theme switcher shares one frosted-glass surface: the diagonal sheen,
-		 * vibrant backdrop blur, rim highlight and lifting shadow are defined here.
-		 */
-		.theme-switch {
-			background: linear-gradient(140deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.18) 100%);
-			backdrop-filter: blur(10px) saturate(125%);
-			-webkit-backdrop-filter: blur(10px) saturate(125%);
-			box-shadow: 0 4px 12px -8px rgba(50,60,35,0.22),
-						inset 0 1px 1px rgba(255,255,255,0.85),
-						inset 0 -5px 9px -7px rgba(90,110,70,0.12);
-			/* Each chip gets its own GPU layer so that Safari keeps painting the
-			   backdrop-filter after the entrance animations have finished. */
-			transform: translateZ(0);
-			will-change: transform;
-		}
-		[data-theme="dark"] .theme-switch {
-			background: linear-gradient(140deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.04) 100%);
-		}
-
-		/* ---- Hero (main.css 390-524, OMITTING .hero-corner*) ---------------- */
-		.hero { padding-top: 1rem; }
-		.hero__stage {
-			position: relative;
-			border-radius: var(--radius-xl);
-			overflow: hidden;
-			padding: 0;
-			background:
-				radial-gradient(90% 80% at 82% 8%, rgba(148,166,125,0.34), transparent 60%),
-				radial-gradient(80% 80% at 8% 96%, rgba(124,144,99,0.26), transparent 62%),
-				radial-gradient(60% 60% at 50% 50%, rgba(255,255,255,0.30), transparent 70%),
-				rgba(255,255,255,0.22);
-			backdrop-filter: blur(6px) saturate(140%);
-			-webkit-backdrop-filter: blur(6px) saturate(140%);
-			border: 1px solid var(--border-glass);
-			box-shadow: var(--shadow-glass);
-			min-height: min(88vh, 780px);
-			display: flex; flex-direction: column; align-items: center; justify-content: center;
-		}
-		/* A slow-drifting sheen keeps the glass feeling alive without needing a video. */
-		.hero__stage::before {
-			content: ""; position: absolute; inset: -20%;
-			background: radial-gradient(38% 38% at 30% 30%, rgba(148,166,125,0.22), transparent 70%),
-						radial-gradient(34% 34% at 75% 65%, rgba(124,144,99,0.18), transparent 70%);
-			filter: blur(30px);
-			animation: hero-drift 24s var(--ease) infinite alternate;
-			z-index: 0; pointer-events: none;
-		}
-		@keyframes hero-drift { to { transform: translate3d(4%, -3%, 0) scale(1.08); } }
-
-		/* Top Bar */
-		.hero__topbar {
-			position: absolute; top: 0; left: 0; right: 0; z-index: 4;
-			display: flex; align-items: center; justify-content: flex-end;
-			padding: clamp(1rem, 2.4vw, 1.6rem) clamp(1.2rem, 3vw, 2.2rem);
-		}
-		/* On the home hero the switcher keeps the sage-green accent that the old "Let's talk" button used. */
-		.hero__topbar .theme-switch {
-			background: var(--sage-600);
-			box-shadow: 0 12px 26px -14px rgba(81, 97, 63, 0.9);
-		}
-		.hero__topbar .theme-switch__btn { color: rgba(255, 255, 255, 0.72); }
-		.hero__topbar .theme-switch__btn:hover { color: #fff; }
-		.hero__topbar .theme-switch__btn.is-active { background: rgba(255, 255, 255, 0.24); color: #fff; box-shadow: none; }
-
-		/* Centered Headline */
-		.hero__head { position: relative; z-index: 2; width: 100%; max-width: 60rem; padding: 0 clamp(1.25rem, 5vw, 2rem); text-align: center; display: flex; flex-direction: column; align-items: center; }
-		.hero h1 { font-size: clamp(2.9rem, 9.5vw, 6.8rem); letter-spacing: -0.035em; line-height: 1.02; margin: 0; }
-		/* The first part takes the sage accent and the second stays ink italic. The right
-		   padding on the second part stops its italic final letter from being clipped. */
-		.hero__fn { color: var(--sage-600); }
-		.hero__ln { color: var(--ink); font-style: italic; font-weight: 400; padding-right: 0.12em; }
-		.hero__socials { margin-top: 1.8rem; }
-
-		/* Mesh Gradient Canvas */
-		.hero__gradient {
-			position: absolute;
-			inset: 0;
-			width: 100%;
-			height: 100%;
-			display: block;
-			z-index: 1;
-			border-radius: inherit;
-			/*
-			 * Canvas sits above the static radial background + ::before drift sheen (z-index 0)
-			 * but below all hero content: .hero__head z2, .hero__topbar z4.
-			 * border-radius: inherit clips to the stage's --radius-xl rounded corners.
-			 */
-
-			/* Light Theme Gradient Colors */
-			--gradient-color-1: #b6c3a2;
-			--gradient-color-2: #e8ecdf;
-			--gradient-color-3: #94a67d;
-			--gradient-color-4: #efe9da;
-		}
-
-		:root[data-theme="dark"] .hero__gradient {
-			/* Dark Theme Gradient Colors — navy base (1-3), one muted sage inflection (4) */
-			--gradient-color-1: #131c2a;
-			--gradient-color-2: #0f1622;
-			--gradient-color-3: #1c2738;
-			--gradient-color-4: #33452b;
-		}
-
-		/* Hero Responsive */
-		@media (max-width: 620px) {
-			.hero__stage { border-radius: 1.75rem; }
-			.hero__topbar { padding: 0.9rem 1rem; }
-		}
-
-		/* ---- Dark-mode overrides (main.css 637-646) ------------------------- */
-		[data-theme="dark"] .hero__topbar .theme-switch { background: var(--sage-500); }
-		[data-theme="dark"] .hero__topbar .theme-switch__btn { color: rgba(16, 22, 31, 0.6); }
-		[data-theme="dark"] .hero__topbar .theme-switch__btn:hover { color: #10161f; }
-		[data-theme="dark"] .hero__topbar .theme-switch__btn.is-active { background: rgba(16, 22, 31, 0.18); color: #10161f; }
-		[data-theme="dark"] .hero__stage {
-			background:
-				radial-gradient(90% 80% at 82% 8%, rgba(148,166,125,0.20), transparent 60%),
-				radial-gradient(80% 80% at 8% 96%, rgba(124,144,99,0.16), transparent 62%),
-				rgba(255,255,255,0.03);
-		}
-
-		/* ---- No-scroll home: hero fills the viewport (main.css 650-653) ----- */
-		body.is-home { height: 100dvh; overflow: hidden; display: flex; flex-direction: column; }
-		body.is-home main { flex: 1; min-height: 0; min-width: 0; display: flex; flex-direction: column; }
-		body.is-home .hero { flex: 1; min-height: 0; min-width: 0; display: flex; flex-direction: column; padding: clamp(1rem, 3vh, 2.25rem) clamp(1.25rem, 4vw, 3rem); }
-		body.is-home .hero__stage { flex: 1; min-height: 0; min-width: 0; }
-
-		/* ---- Entrance animations (main.css 655-665) ------------------------- */
-		@keyframes fade-up   { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
-		@keyframes fade-in   { from { opacity: 0; } to { opacity: 1; } }
-		@keyframes scale-in  { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: none; } }
-
-		.enter { opacity: 0; animation: fade-up 0.9s var(--ease) forwards; animation-delay: var(--d, 0s); }
-		.enter--scale { animation-name: scale-in; }
-		.enter--fade  { animation-name: fade-in; }
-
-		/* ---- New form CSS (spec §5) — frosted fields over the mesh ---------- */
-		.tagline { margin-top: 1rem; color: var(--ink-soft); font-size: clamp(1rem, 1.4vw, 1.12rem); }
-		.tagline s { color: var(--ink-faint); }
-		.qn-form { margin-top: 1.8rem; width: 100%; max-width: 26rem; display: flex; flex-direction: column; gap: 0.7rem; }
-		.field {
-			width: 100%; padding: 0.75rem 1.2rem; text-align: center; font: inherit; color: var(--ink);
-			background: var(--surface-2); border: 1px solid var(--border-glass); border-radius: 999px;
-			outline: 0; backdrop-filter: blur(14px) saturate(150%); -webkit-backdrop-filter: blur(14px) saturate(150%);
-			box-shadow: 0 1px 1px rgba(255,255,255,0.5) inset;
-			transition: border-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
-		}
-		.field::placeholder { color: var(--ink-faint); }
-		.field:focus, .field:focus-visible { outline: none; border-color: var(--border-glass); }
-		.qn-form .btn { position: relative; isolation: isolate; align-self: center; margin-top: 0.4rem; color: #fff; background: var(--sage-600); box-shadow: 0 12px 26px -14px rgba(81,97,63,0.9); }
-		/* Glossy top reflection — matches the hero theme-switch / Ayooby labs-pill. z-index keeps the label crisp above the sheen. */
-		.qn-form .btn::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: -1; background: linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.08) 34%, transparent 60%); }
-		[data-theme="dark"] .qn-form .btn { background: var(--sage-500); color: #10161f; }
-		[data-theme="dark"] .qn-form .btn::after { background: linear-gradient(180deg, rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.05) 36%, transparent 62%); }
-		.status { display: block; min-height: 1.4em; margin-top: 1rem; color: var(--ink-soft); font-size: 0.95rem; }
-		.status a { color: var(--sage-700); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--sage-300); font-weight: 500; }
-
-		/* ---- Entrance stagger delays ---------------------------------------- */
-		.hero__topbar .enter { --d: .1s; }
-		.hero__head .enter:nth-child(1) { --d: .08s; }
-		.hero__head .enter:nth-child(2) { --d: .16s; }
-		.hero__head .enter:nth-child(3) { --d: .24s; }
-
-		/* ---- Reduced motion (main.css 667-676) ------------------------------ */
-		@media (prefers-reduced-motion: reduce) {
-			html { scroll-behavior: auto; }
-			*, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-			.enter { opacity: 1 !important; transform: none !important; }
-			/* Gradient canvas hidden — static radial fallback background shows instead */
-			.hero__gradient { display: none; }
-			/* Drift sheen stops (the wildcard above already fires at 0.01ms, but explicit is safer) */
-			.hero__stage::before { animation: none; }
-		}
-	</style>
-</head>
+${pageHead("Quickname Link Shortener")}
 
 <body class="is-home">
 	<div class="aurora" aria-hidden="true"></div>
 	<main>
 		<section class="hero">
 			<div class="hero__stage">
-				<canvas id="hero-gradient" class="hero__gradient" data-hero-gradient aria-hidden="true"></canvas>
-				<div class="hero__topbar">
-					<div class="theme-switch enter enter--fade" role="group" aria-label="Colour theme">
-						<button class="theme-switch__btn" type="button" data-theme-set="light" aria-label="Light theme" title="Light"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
-						<button class="theme-switch__btn" type="button" data-theme-set="auto" aria-label="Match system theme" title="System"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></button>
-						<button class="theme-switch__btn" type="button" data-theme-set="dark" aria-label="Dark theme" title="Dark"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg></button>
-					</div>
-				</div>
+${heroTopbar}
 				<div class="hero__head">
 					<h1 class="enter"><span class="hero__fn">Quickna</span><span class="hero__ln">me</span></h1>
 					<p class="tagline enter"><s>Not</s> your average link shortener.</p>
 					<div class="qn-form enter">
 						<input class="field" type="text" id="url" placeholder="URL" required>
-						<input class="field" type="text" id="alias" placeholder="Alias (Optional)">
-						<input class="field" type="text" id="totp" placeholder="TOTP (Optional)">
+						<input class="field" type="text" id="alias" placeholder="Alias (optional)">
+						<input class="field" type="text" id="totp" placeholder="TOTP (optional)">
 						<!--sse-->
 						<button id="submit" class="btn" type="button">Shorten</button>
 						<script nonce="${scriptNonce}">
-					function isLsAvail() {
-						const testContent = "dreamIsACheater";
-						try {
-							localStorage.setItem(test, testContent);
-							localStorage.removeItem(test);
-							return true;
-						} catch(e) {
-							return false;
-						}
-					}
+						let pending = false;
 
-					function submitRequest() {
-						if (isLsAvail() === true) {
-							while (localStorage.getItem(requestPending) === true) {
-								document.getElementById("status").innerText = "Please wait for the previous request before submitting a new one."
-								continue;
+						function submitRequest() {
+							if (pending) {
+								return;
 							}
-							localStorage.setItem(requestPending, true);
-						}
-						document.getElementById("status").innerText = "Shrinking the URL..."
-						const object = {
-							origin: document.getElementById("url").value,
-							alias: document.getElementById("alias").value,
-							totp: document.getElementById("totp").value
-						}
-						fetch('/', {
-							method: "POST",
-							body: JSON.stringify(object),
-							headers: {
-								'Content-Type': 'application/json'
-							}
-						})
-							.then(data => data.text())
-							.then(data => {
-								document.getElementById("status").innerHTML = data;
+							pending = true;
+							document.getElementById("status").innerText = "Shrinking the URL...";
+							fetch("/", {
+								method: "POST",
+								body: JSON.stringify({
+									origin: document.getElementById("url").value,
+									alias: document.getElementById("alias").value,
+									totp: document.getElementById("totp").value
+								}),
+								headers: {
+									"Content-Type": "application/json"
+								}
 							})
-							.then(data => {
-								const linkElement = document.getElementById("redirLink");
-								if (linkElement) {
-									navigator.clipboard.writeText(linkElement.href);
-								}
-								if (isLsAvail() === true) {
-									localStorage.setItem(requestPending, false);
-								}
-							});
-					}
-
-					function wrapperEnterKeySubmit(event) {
-						if (event.key === 'Enter') {
-							submitRequest();
+								.then((response) => response.text())
+								.then((text) => {
+									document.getElementById("status").innerHTML = text;
+									const link = document.getElementById("redirLink");
+									if (link) {
+										navigator.clipboard.writeText(link.href).catch(() => {});
+									}
+								})
+								.catch(() => {
+									document.getElementById("status").innerText = "Something went wrong. Please try again.";
+								})
+								.finally(() => {
+									pending = false;
+								});
 						}
-					}
 
-					document.getElementById("url").addEventListener("keypress", wrapperEnterKeySubmit);
-					document.getElementById("alias").addEventListener("keypress", wrapperEnterKeySubmit);
-					document.getElementById("totp").addEventListener("keypress", wrapperEnterKeySubmit);
-					document.getElementById("submit").addEventListener("click", submitRequest);
-				</script>
+						function submitOnEnter(event) {
+							if (event.key === 'Enter') {
+								submitRequest();
+							}
+						}
+
+						document.getElementById("url").addEventListener("keypress", submitOnEnter);
+						document.getElementById("alias").addEventListener("keypress", submitOnEnter);
+						document.getElementById("totp").addEventListener("keypress", submitOnEnter);
+						document.getElementById("submit").addEventListener("click", submitRequest);
+					</script>
 						<!--/sse-->
 						<label class="status" id="status"></label>
 					</div>
@@ -1101,56 +638,10 @@ async function handleRequest(request, randValues, time) {
 			</div>
 		</section>
 	</main>
-	<script src="/qnmesh" nonce="${scriptNonce}"></script>
-	<script nonce="${scriptNonce}">
-	(function(){
-		var root = document.documentElement;
-		var mql = matchMedia("(prefers-color-scheme:dark)");
-		var resolve = function(p){ return p==="auto" ? (mql.matches?"dark":"light") : p; };
-		var reduce = matchMedia("(prefers-reduced-motion:reduce)").matches;
-		var stage = document.querySelector(".hero__stage");
-		var grad = null, lastMode = root.dataset.theme || resolve(root.dataset.themePref||"auto");
-		function teardown(){
-			if(!grad) return;
-			try { grad.pause(); grad.disconnect(); var ext = grad.minigl && grad.minigl.gl && grad.minigl.gl.getExtension("WEBGL_lose_context"); if(ext) ext.loseContext(); } catch(e){}
-			var old = document.getElementById("hero-gradient"); if(old) old.remove();
-			grad = null;
-		}
-		function spawn(){
-			if(reduce || !stage || typeof Gradient==="undefined") return;
-			teardown();
-			var c = document.createElement("canvas");
-			c.id="hero-gradient"; c.className="hero__gradient"; c.setAttribute("data-hero-gradient",""); c.setAttribute("aria-hidden","true");
-			stage.insertBefore(c, stage.firstChild);
-			grad = new Gradient(); grad.initGradient("#hero-gradient");
-		}
-		var btns = [].slice.call(document.querySelectorAll(".theme-switch__btn[data-theme-set]"));
-		function paintBtns(pref){ btns.forEach(function(b){ var on=b.dataset.themeSet===pref; b.classList.toggle("is-active",on); b.setAttribute("aria-pressed",String(on)); }); }
-		function apply(pref){
-			var mode = resolve(pref);
-			root.dataset.theme=mode; root.dataset.themePref=pref;
-			try { localStorage.setItem("theme",pref); } catch(e){}
-			var mc=document.querySelector("meta[name=theme-color]"); if(mc) mc.content=mode==="dark"?"#0f1622":"#f3f0e7";
-			paintBtns(pref);
-			if(mode!==lastMode){ lastMode=mode; spawn(); }
-		}
-		btns.forEach(function(b){ b.addEventListener("click", function(){ apply(b.dataset.themeSet); }); });
-		mql.addEventListener("change", function(){ if((root.dataset.themePref||"auto")==="auto") apply("auto"); });
-		paintBtns(root.dataset.themePref||"auto");
-		spawn(); // First paint (server-rendered canvas already present; spawn replaces it cleanly).
-	})();
-	</script>
-	<script nonce="${scriptNonce}">
-		const divInstall = document.getElementById("installContainer");
-		const butInstall = document.getElementById("butInstall");
-
-		if ('serviceWorker' in navigator) {
-  			navigator.serviceWorker.register("c2VydmljZS13b3JrZXI");
-		}
-	</script>
+${pageScripts}
 </body>
 
-</html>`
+</html>`;
 
 	const serviceWorker = `const CACHE_NAME = 'offline';
 const OFFLINE_URL = '/';
@@ -1209,7 +700,6 @@ self.addEventListener('fetch', function (event) {
 		pathname = pathname.toLowerCase();
 
 		if (pathname != "") {
-			// TODO: Clean up the code for the reserved aliases.
 			if (pathname == "awnvbg") {
 				return new Response(icon, { headers: { "content-type": "image/svg+xml" } });
 			} else if (pathname == "c2vydmljzs13b3jrzxi") {
@@ -1261,7 +751,7 @@ self.addEventListener('fetch', function (event) {
 	}
 
 	if (request.method === "POST") {
-		const jsonData = JSON.parse(JSON.stringify(await request.json()));
+		const jsonData = await request.json();
 		// Coerce the attacker-controlled body to strings up front: a missing or non-string
 		// field would otherwise crash the string methods below (.replace/.toLowerCase) into
 		// a 500 that leaks a stack trace.
@@ -1269,41 +759,33 @@ self.addEventListener('fetch', function (event) {
 		let clientTotp = String(jsonData.totp ?? "");
 		let originUrl = String(jsonData.origin ?? "");
 
-		let doesAliasExist = function (existingValue) {
-			if (existingValue === null) {
-				return false;
-			} else {
-				return true;
-			}
-		}
-
 		// Remove spaces from the OTP as some authenticator apps add them in.
 		clientTotp = clientTotp.replace(/\s+/g, "");
 
-		// Handle the OTP verification first as it is time constrainted. Only compute the
-		// server OTP when a secret is configured and the client supplied one — getOtp()
+		// Handle the OTP verification first as it is time-constrained. Only compute the
+		// server OTP when a secret is configured and the client supplied one: getOtp()
 		// throws on an empty secret (hexToArray() on an empty string returns null).
 		if ((clientTotp !== "") && (totpSecret !== "")) {
 			let serverTotp = await getOtp(totpSecret, time);
 			if (Number(clientTotp) !== Number(serverTotp)) {
-				return new Response(`The OTP you have entered was incorrect.`);
+				return new Response("The OTP you have entered was incorrect.");
 			}
 		}
 
 		// Verify the alias path next, as the originUrl isn't useful if this is borked.
 		if (aliasPath == "") {
-			let count = 0
+			let count = 0;
 			aliasPath = await randomPath();
-			while (doesAliasExist(await KV_STORE.get(aliasPath)) === true) {
+			while (await KV_STORE.get(aliasPath) !== null) {
 				if (count > 4) {
 					return new Response("Random alias generation failed. Please try again later.");
 				}
 				aliasPath = await randomPath();
-				count += 1
+				count += 1;
 			}
 		} else {
-			aliasPath = aliasPath.toLowerCase()
-			const regexMatch = new RegExp("^[a-z0-9\\-]+$")
+			aliasPath = aliasPath.toLowerCase();
+			const regexMatch = new RegExp("^[a-z0-9\\-]+$");
 			if (!regexMatch.test(aliasPath)) {
 				return new Response("The alias path you've entered is invalid. It is limited to alphanumeric characters and hyphens.");
 			}
@@ -1312,7 +794,7 @@ self.addEventListener('fetch', function (event) {
 		// Finally, verify the URL.
 		if (!await verifyUrl(originUrl)) {
 			// This is what browsers do, don't blame me.
-			originUrl = "http://" + originUrl
+			originUrl = "http://" + originUrl;
 			if (!await verifyUrl(originUrl)) {
 				return new Response("The URL you have entered is invalid.");
 			}
@@ -1326,19 +808,19 @@ self.addEventListener('fetch', function (event) {
 			return new Response("Nice try, but that won't work.");
 		}
 
-		// TODO: Clean up the code for the reserved aliases.
-		if ((aliasPath === "awnvbg") || (aliasPath === "c2VydmljZS13b3JrZXI") || (aliasPath === "qnmesh")) {
+		// The alias is lowercased above, so the lowercase reserved list matches it.
+		if (reservedPaths.includes(aliasPath)) {
 			return new Response("This alias entered is reserved, please try again.");
 
 			// If everything checks out, push the value to the key store.
-		} else if (doesAliasExist(await KV_STORE.get(aliasPath)) === false) {
+		} else if (await KV_STORE.get(aliasPath) === null) {
 			let timeLimit = "";
 			// We already verify the OTP above, so just check if we've used one.
 			if ((clientTotp !== "") && (totpSecret !== "")) {
 				await KV_STORE.put(aliasPath, originUrl);
 			} else {
 				await KV_STORE.put(aliasPath, originUrl, { expirationTtl: 604800 });
-				timeLimit = "for seven days "
+				timeLimit = "for seven days ";
 			}
 			return new Response(`Your shortened URL has been generated and is available ${timeLimit}at <a id="redirLink" href="https://quickna.me/${aliasPath}">https://quickna.me/${aliasPath}</a>.`);
 		} else {
