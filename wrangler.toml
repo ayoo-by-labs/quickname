@@ -17,3 +17,15 @@ kv_namespaces = [
 minify = true
 
 send_metrics = false
+
+# Sage design tokens, fonts, icons and favicons come from the branding submodule
+# (ayoo-by/branding) as imported modules: text for CSS and SVG, bytes for the rest.
+[[rules]]
+type = "Text"
+globs = ["**/*.css", "**/*.svg"]
+fallthrough = true
+
+[[rules]]
+type = "Data"
+globs = ["**/*.woff2", "**/*.ico", "**/*.png"]
+fallthrough = true
